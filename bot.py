@@ -7,9 +7,14 @@ from aiogram.enums import ParseMode
 
 from config import BOT_TOKEN
 from handlers import user_router
+from utils.db import init_db, sync_excel_to_db # <-- buni qo'shasiz
 
 async def main():
     logging.basicConfig(level=logging.INFO)
+
+    # Bazani tayyorlash va Excel ma'lumotlarini yuklash
+    init_db()
+    sync_excel_to_db()
 
     bot = Bot(
         token=BOT_TOKEN,
